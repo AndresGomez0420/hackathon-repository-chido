@@ -1,3 +1,5 @@
+
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Páginas
@@ -20,9 +22,9 @@ function App() {
 
       {/* Definición de rutas */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
         {/* Ruta por defecto si no se encuentra la página */}

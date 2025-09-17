@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import '../../App.Css'; // Uncomment if you want to import CSS globally
 
-function App() {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -63,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
