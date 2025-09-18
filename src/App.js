@@ -1,13 +1,14 @@
 
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import './App.css';
 // Páginas
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import About from './pages/About';
 import Register from './pages/auth/Register';
 import NotFound from './pages/NotFound';
+import Contact from './pages/Contact';
 
 
 // Componentes globales
@@ -22,10 +23,12 @@ function App() {
 
       {/* Definición de rutas */}
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
         
         {/* Ruta por defecto si no se encuentra la página */}
         <Route path="*" element={<NotFound />} />

@@ -16,8 +16,11 @@ function Login() {
     alert('Login exitoso!');
   };
 
-  return (
+  return (<>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <button className="">
+        Regresar
+      </button>
       <form
         className="bg-white p-8 rounded shadow-md w-full max-w-sm"
         onSubmit={handleSubmit}
@@ -59,7 +62,7 @@ function Login() {
           Entrar
         </button>
       </form>
-    </div>
+    </div></>
   );
 }
 
