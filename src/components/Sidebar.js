@@ -1,12 +1,12 @@
-import React from 'react';
+
 
 const Sidebar = () => {
   return (
-    <aside className="bg-gray-200 p-4 w-64">
-      <h3>Sidebar</h3>
+    <aside className="bg-gray-200 p-4 w-64 h-screen ">
+      <h3>Clientes</h3>
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
+        <li>Tiendas</li>
+        <li>Artesanias</li>
         <li>Item 3</li>
       </ul>
     </aside>
