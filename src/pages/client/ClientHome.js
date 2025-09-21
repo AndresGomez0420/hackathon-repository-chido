@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ProductDetailView from '../../components/ProductDetailView';
 
 const STORES = [
   {
@@ -21,6 +23,8 @@ const STORES = [
 
 const ClientsHome = () => {
   const [tab, setTab] = useState('stores');
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
 
   const allProducts = STORES.flatMap(store =>
     store.products.map(product => ({
@@ -28,6 +32,63 @@ const ClientsHome = () => {
       storeName: store.name
     }))
   );
+
+  const productsDetails = {
+    101: {
+      id: 101,
+      title: 'Pulsera tejida',
+      description: 'Hermosa pulsera tejida a mano con técnicas tradicionales. Cada pieza es única y representa el arte ancestral de nuestros artesanos.',
+      price: '$120.00',
+      image: 'https://via.placeholder.com/400x300',
+      category: 'Artesanías',
+      stock: 5,
+      storeName: 'Artesanías Andres',
+      features: ['Tejido a mano', 'Materiales naturales', 'Diseño único', 'Talla ajustable']
+    },
+    102: {
+      id: 102,
+      title: 'Bolso artesanal',
+      description: 'Bolso elaborado con fibras naturales y técnicas ancestrales. Perfecto para el uso diario con un toque de tradición.',
+      price: '$350.00',
+      image: 'https://via.placeholder.com/400x300',
+      category: 'Artesanías',
+      stock: 3,
+      storeName: 'Artesanías Andres',
+      features: ['Fibras naturales', 'Resistente y duradero', 'Diseño tradicional', 'Hecho a mano']
+    },
+    201: {
+      id: 201,
+      title: 'Collar de cuentas',
+      description: 'Elegante collar elaborado con cuentas de colores vibrantes. Cada cuenta es seleccionada cuidadosamente para crear patrones únicos.',
+      price: '$90.00',
+      image: 'https://via.placeholder.com/400x300',
+      category: 'Joyería Artesanal',
+      stock: 8,
+      storeName: 'Manos Creativas',
+      features: ['Cuentas de colores', 'Patrones únicos', 'Cierre ajustable', 'Hecho a mano']
+    },
+    202: {
+      id: 202,
+      title: 'Sombrero de palma',
+      description: 'Sombrero tradicional tejido con hojas de palma natural. Protección solar con estilo y tradición cultural.',
+      price: '$220.00',
+      image: 'https://via.placeholder.com/400x300',
+      category: 'Sombreros',
+      stock: 6,
+      storeName: 'Manos Creativas',
+      features: ['Palma natural', 'Protección UV', 'Transpirable', 'Diseño tradicional']
+    }
+  };
+
+  const handleProductClick = (productId) => {
+    setSelectedProduct(productsDetails[productId]);
+    setTab('details');
+  };
+
+  const handleBackToProducts = () => {
+    setSelectedProduct(null);
+    setTab('products');
+  };
 
   return (
     <div className="p-8 min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200">
@@ -71,7 +132,7 @@ const ClientsHome = () => {
             </div>
           ))}
         </div>
-      ) : (
+      ) : tab === 'products' ? (
         <div className="max-w-4xl mx-auto">
           <table className="w-full border-collapse bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
             <thead>
@@ -79,6 +140,7 @@ const ClientsHome = () => {
                 <th className="py-3 px-5 text-left font-semibold">Tienda</th>
                 <th className="py-3 px-5 text-left font-semibold">Artículo</th>
                 <th className="py-3 px-5 text-left font-semibold">Precio</th>
+                <th className="py-3 px-5 text-left font-semibold">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -90,12 +152,26 @@ const ClientsHome = () => {
                   </td>
                   <td className="py-3 px-5">{product.name}</td>
                   <td className="py-3 px-5 font-bold text-blue-600">${product.price}</td>
+                  <td className="py-3 px-5">
+                    <button
+                      className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                      onClick={() => handleProductClick(product.id)}
+                    >
+                      Ver Detalles
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      )}
+      ) : tab === 'details' && selectedProduct ? (
+        <ProductDetailView 
+          selectedProduct={selectedProduct} 
+          onBack={handleBackToProducts} 
+        />
+      ) : null}
+      
       <style>
         {`
           .animate-fade-in {
