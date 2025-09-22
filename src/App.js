@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 // Páginas
+import React from 'react';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import About from './pages/About';
@@ -11,10 +12,11 @@ import NotFound from './pages/NotFound';
 import Contact from './pages/Contact';
 import ClientsHome from './pages/client/ClientHome';
 
-
 // Componentes globales
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+
 
 function App() {
   return (

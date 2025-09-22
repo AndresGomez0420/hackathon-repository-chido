@@ -1,0 +1,34 @@
+ALTER TABLE transaction
+ADD CONSTRAINT fk_client
+FOREIGN KEY (id_client)
+REFERENCES t_client(id);
+
+ALTER TABLE transaction
+ADD CONSTRAINT fk_store
+FOREIGN KEY (id_store)
+REFERENCES t_store(id);
+
+ALTER TABLE store_item
+ADD CONSTRAINT fk_store
+FOREIGN KEY (id_store)
+REFERENCES t_store(id);
+
+ALTER TABLE loan
+ADD CONSTRAINT fk_client
+FOREIGN KEY (id_client)
+REFERENCES t_client(id);
+
+ALTER TABLE repayment_schedule
+ADD CONSTRAINT fk_loan
+FOREIGN KEY (loan_id)
+REFERENCES loan(id);
+
+ALTER TABLE credit_paid
+ADD CONSTRAINT fk_loan
+FOREIGN KEY (id_loan)
+REFERENCES loan(id);
+
+ALTER TABLE credit_paid
+ADD CONSTRAINT fk_currency
+FOREIGN KEY (id_currency)
+REFERENCES currency(id);
