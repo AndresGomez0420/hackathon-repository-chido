@@ -30,6 +30,11 @@ const Navbar = () => {
           Contact
           </Link>
         </li>
+        <li>
+          <Link className='no-underline' to="/clientes">
+          Clientes
+          </Link>
+        </li>
       </ul>
     </nav>
   );

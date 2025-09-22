@@ -9,6 +9,7 @@ import About from './pages/About';
 import Register from './pages/auth/Register';
 import NotFound from './pages/NotFound';
 import Contact from './pages/Contact';
+import ClientsHome from './pages/client/ClientHome';
 
 
 // Componentes globales
@@ -29,7 +30,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
-        
+        <Route path="/clientes" element={<ClientsHome />} />
+        <></>
         {/* Ruta por defecto si no se encuentra la página */}
         <Route path="*" element={<NotFound />} />
       </Routes>
