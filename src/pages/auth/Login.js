@@ -1,21 +1,44 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 // import '../../App.Css'; // Uncomment if you want to import CSS globally
-
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMenssage] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Por favor ingresa tu correo y contraseña.');
-      return;
+    try {
+      const data =  loginService(email, password);
+      setMenssage("✅ Login exitoso: " + JSON.stringify(data));
+      // Guardar token en localStorage (opcional)
+      localStorage.setItem("token", data.token);
+
+      // Redirigir al dashboard
+    } catch (err) {
+      setMenssage("❌ Usuario o contraseña incorrectos");
     }
-    setError('');
-    alert('Login exitoso!');
   };
+const loginService = async (email, password) => {
+  const response = await fetch("http://localhost:5000/u/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  // ✅ convertir la respuesta una sola vez
+  const data = await response.json();
+
+  if (!response.ok) {
+    alert("❌ Error en login: " + (data.error || response.statusText));
+  }else{
+
+      navigate("/clientes");
+  }
+
+  return data; // regresa el JSON al componente
+};
 
   return (<><div className="min-h-screen bg-gray-100 flex items-center justify-center">
   <div className="w-96 bg-white rounded shadow-md">
