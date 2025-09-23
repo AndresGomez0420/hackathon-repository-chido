@@ -5,12 +5,11 @@ create table t_client (
 	email_address varchar(100) unique not null,
 	password_account varchar(60) not null,
 	num_tel varchar(20) not null,
-	num_tel_2 varchar(2),
+	num_tel_2 varchar(20),
 	start_date date default current_date,
 	person_type boolean,
 	wallet_address text,
 	developer_keys text,
-	num_tarjet bigint
 );
 
 

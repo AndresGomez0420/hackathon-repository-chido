@@ -48,14 +48,18 @@ export default function Register(){
             const userData = {
                 name: data.firstName,
                 last_name: data.lastName,
+                name_store: data.name_store,
+                street_addres: data.street_addres,
                 email_address: data.email,
                 password_account: data.password,
                 num_tel: data.numberPhone,
                 num_tel_2: null,
+                store_type: data.store_type,
+                opening_hours: data.opening_hours,
+                closing_time: data.closing_time,
                 person_type: data.userType === 'cliente' ? true : false,
                 wallet_address: data.walletAddress || null,
                 developer_keys: data.developerKeys || null,
-                num_tarjet: null
             };
 
             const result = await registerService(userData);
