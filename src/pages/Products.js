@@ -3,12 +3,9 @@ import { useForm } from "react-hook-form";
 export default function Products(){
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-            id: "",
-            productId: "",
-            storeId: "",
-            amount: "",
-            stock: "",
-            date: ""
+          productName: "",
+          description: "",
+          date: ""
         }
     });
 
@@ -25,35 +22,15 @@ export default function Products(){
         <h2 className="text-2xl font-bold mb-6 text-center">Registro de los productos</h2>
         <div className="mb-4">
           <input
-            {...register("id")}
-            placeholder="Id"
+            {...register("productName")}
+            placeholder="Nombre del producto"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
           />
           <input
-            {...register("productId", { required: "El ID del producto es obligatorio" })}
-            placeholder="Id del producto"
+            {...register("description")}
+            placeholder="Description del producto"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
           />
-          {errors.productId && <p className="text-red-500 text-sm">{errors.productId.message}</p>}
-          <input
-            {...register("storeId")}
-            placeholder="Id del negocio"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <input
-            {...register("amount", { required: "El monto es obligatorio", lueAsNumber: true, 
-                min: { value: 0, message: "El monto no puede ser negativo" }
-            })}
-            placeholder="Monto"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          {errors.amount && <p className="text-red-500 text-sm">{errors.amount.message}</p>}
-          <input
-            {...register("stock")}
-            placeholder="Existencias"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <label htmlFor="openingTime">Fecha</label>
           <input 
           type="date"
           id="date"

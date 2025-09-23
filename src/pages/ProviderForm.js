@@ -3,10 +3,7 @@ import {useForm} from "react-hook-form"
 export default function ProviderForm(){
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            firstName: "",
-            lastName: "",
             storeName: "",
-            taxId: "", // rfc
             address: "",
             email: "",
             password: "",
@@ -32,28 +29,8 @@ export default function ProviderForm(){
         <h2 className="text-2xl font-bold mb-6 text-center">Registro del Proveedor</h2>
         <div className="mb-4">
           <input
-            {...register("firstName")}
-            placeholder="Nombre"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <input
-            {...register("lastName")}
-            placeholder="Apellidos"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <input
             {...register("storeName")}
             placeholder="Nombre del negocio"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <input
-            {...register("taxId")}
-            placeholder="RFC"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
-          <input
-            {...register("firstName")}
-            placeholder="Nombre"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
           />
           <input
@@ -98,11 +75,6 @@ export default function ProviderForm(){
             placeholder="Hora de apertura"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
             />
-          <input
-            {...register("accountNumber")}
-            placeholder="Numero de cuenta"
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 mb-2"
-          />
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"

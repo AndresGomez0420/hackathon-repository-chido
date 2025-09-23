@@ -11,6 +11,8 @@ import Register from './pages/auth/Register';
 import NotFound from './pages/NotFound';
 import Contact from './pages/Contact';
 import ClientsHome from './pages/client/ClientHome';
+import Products from './pages/Products';
+import FormProvider from './pages/ProviderForm';
 
 // Componentes globales
 import Navbar from './components/Navbar';
@@ -33,6 +35,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/clientes" element={<ClientsHome />} />
+        <Route path="/productos" element={<Products />} />
+        <Route path="/proveedores" element={<FormProvider />} />
         <></>
         {/* Ruta por defecto si no se encuentra la página */}
         <Route path="*" element={<NotFound />} />
