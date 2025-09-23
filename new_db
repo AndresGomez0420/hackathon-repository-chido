@@ -1,9 +1,9 @@
 create table t_client (
-	id bigint primary key,
+	id bigserial primary key,
 	name varchar(30) not null,
-	last_name varchar(50) not null,
+	last_name varchar(20) not null,
 	email_address varchar(100) unique not null,
-	password_account varchar(50) not null,
+	password_account varchar(60) not null,
 	num_tel varchar(20) not null,
 	num_tel_2 varchar(2),
 	start_date date default current_date,
@@ -17,13 +17,13 @@ create table t_client (
 
 
 create table t_store(
-	id bigint primary key,
+	id bigserial primary key,
 	name varchar(30) not null,
-	lastname varchar(50) not null, 
-	name_store varchar(50) not null,
+	lastname varchar(20) not null, 
+	name_store varchar(20) not null,
 	street_addres varchar (255) not null,
 	email_adrees varchar(100) not null,
-	password_store varchar(25) not null,
+	password_store varchar(60) not null,
 	num_tel varchar(20) not null,
 	num_tel_2 varchar(20),
 	store_type bigint,
@@ -36,7 +36,7 @@ create table t_store(
 
 
 create table store_item(
-	id bigint primary key,
+	id bigserial primary key,
 	id_product bigint,
 	id_store bigint,
 	amount numeric (11, 6) default 0.0, 
@@ -48,7 +48,7 @@ create table store_item(
 
 
 create table transaction(
-	id bigint primary key,
+	id bigserial primary key,
 	id_client bigint not null,
 	id_product bigint not null,
 	name_product varchar(50) not null,
@@ -61,12 +61,12 @@ create table transaction(
 
 
 create table currency (
-	id bigint primary key,
+	id bigserial primary key,
 	name varchar(5) not null
 );
 
 create table store_cat(
-	id bigint primary key,
+	id bigserial primary key,
 	name varchar(100) not null,
 	store_description varchar(100) not null,
 	id_catalogo bigint not null,
@@ -75,14 +75,14 @@ create table store_cat(
 
 
 create table product(
-	id bigint primary key,
+	id bigserial primary key,
 	name_product varchar(100)not null,
 	description varchar(100)not null,
 	start_date date default current_date
 );
 
 create table credit_paid(
-	id bigint primary key,
+	id bigserial primary key,
 	id_loan bigint not null,
 	id_client bigint not null,
 	id_tienda bigint not null,
@@ -93,7 +93,7 @@ create table credit_paid(
 );
 
 create table repayment_schedule(
-	id bigint primary key,
+	id bigserial primary key,
 	loan_id bigint not null,
 	installment bigint not null,
 	init_date date not null,
@@ -107,7 +107,7 @@ create table repayment_schedule(
 );
 
 create table loan(
-	id bigint primary key,
+	id bigserial primary key,
 	id_client bigint not null,
 	start_date date default current_date,
 	total_amoun numeric (11, 6) default 0.0,
